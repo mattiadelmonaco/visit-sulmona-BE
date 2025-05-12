@@ -11,7 +11,7 @@ class PointOfInterest extends Model
         return $this->belongsTo(Type::class);
     }
 
-    public function image()
+    public function images()
     {
         return $this->hasMany(Image::class);
     }
