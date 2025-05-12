@@ -45,4 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function pointsOfInterest()
+{
+    return $this->hasMany(PointOfInterest::class);
+}
 }
