@@ -34,6 +34,10 @@
                             <a href="#"
                                 class="card-link d-inline-block text-truncate w-100">{{ $poi->external_link }}</a>
                         </li>
+                        <li class="list-group-item">
+                            <a href="{{ route('points-of-interest.show', $poi->id) }}" class="card-link">Maggiori
+                                informazioni</a>
+                        </li>
                     </ul>
                     <div class="card-body text-center">
                         <a href="#" class="card-link btn btn-warning"><i

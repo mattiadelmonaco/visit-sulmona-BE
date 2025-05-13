@@ -17,15 +17,16 @@ class PointOfInterest extends Model
     }
 
     public function tags() {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class, 'point_of_interest_tags');
     }
 
     public function daysOfWeek() {
-        return $this->belongsToMany(DayOfWeek::class);
+        return $this->belongsToMany(DayOfWeek::class, 'day_of_week_point_of_interests')
+        ->withPivot('first_opening', 'second_opening', 'first_closing', 'second_closing');
     }
 
     public function firstImage()
 {
-    return $this->hasOne(Image::class)->orderBy('id'); // o created_at, se preferisci
+    return $this->hasOne(Image::class)->orderBy('id');
 }
 }

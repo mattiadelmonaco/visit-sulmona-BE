@@ -37,9 +37,17 @@ class PointOfInterestsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(PointOfInterest $points_of_interest)
     {
-        //
+
+        $points_of_interest->load([
+        'type',
+        'images',
+        'tags',
+        'daysOfWeek',
+    ]);
+
+        return view("points-of-interest.show", compact("points_of_interest"));
     }
 
     /**
