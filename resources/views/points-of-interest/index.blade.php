@@ -10,7 +10,9 @@
         <thead>
             <tr>
                 <th>Nome punto di interesse</th>
-                <th>immagine</th>
+                <th>Immagine copertina</th>
+                <th>Link esterno</th>
+                <th>Contatto telefonico</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +26,8 @@
                             Nessuna immagine
                         @endif
                     </td>
+                    <td>{{ $poi->external_link }}</td>
+                    <td>{{ $poi->phone_number }}</td>
 
                 </tr>
             @endforeach
