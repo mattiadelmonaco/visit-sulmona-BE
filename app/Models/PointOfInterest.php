@@ -23,4 +23,9 @@ class PointOfInterest extends Model
     public function daysOfWeek() {
         return $this->belongsToMany(DayOfWeek::class);
     }
+
+    public function firstImage()
+{
+    return $this->hasOne(Image::class)->orderBy('id'); // o created_at, se preferisci
+}
 }

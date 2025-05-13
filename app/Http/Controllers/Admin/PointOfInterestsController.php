@@ -13,7 +13,7 @@ class PointOfInterestsController extends Controller
      */
     public function index()
     {
-        $pointsOfInterest = PointOfInterest::all();
+        $pointsOfInterest = PointOfInterest::with('firstImage')->get();
         
         return view("points-of-interest.index", compact("pointsOfInterest"));
     }
