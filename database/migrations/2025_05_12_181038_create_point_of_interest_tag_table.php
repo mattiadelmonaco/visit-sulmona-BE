@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('point_of_interest_tag', function (Blueprint $table) {
+        Schema::create('point_of_interest_tags', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId("point_of_interest_id")->constrained("point_of_interests")->onDelete("cascade");
