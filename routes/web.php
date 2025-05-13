@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PointOfInterestsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +26,8 @@ Route::middleware(['auth', 'verified'])
 	Route::get('/index', [DashboardController::class, 'index'])
 	->name('dashboard');
 });
+
+Route::resource("points-of-interest", PointOfInterestsController::class)
+->middleware(["auth", "verified"]);
 
 require __DIR__.'/auth.php';
