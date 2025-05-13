@@ -16,7 +16,7 @@
                         <img src="https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg"
                             alt="Immagine mancante">
                     @endif
-                    <div class="card-body">
+                    <div class="card-body" style="height: 115px">
                         <h5 class="card-title">{{ $poi->name }}</h5>
                         <p class="card-text clamp-2">{{ $poi->description }}</p>
                     </div>
