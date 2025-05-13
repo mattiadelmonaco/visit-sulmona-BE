@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([DaysOfWeekTableSeeder::class, TagsTableSeeder::class, TypesTableSeeder::class, PointsOfInterestTableSeeder::class]);
+        $this->call([DaysOfWeekTableSeeder::class, TagsTableSeeder::class, TypesTableSeeder::class, PointsOfInterestTableSeeder::class, ImagesTableSeeder::class]);
 
     }
 }
