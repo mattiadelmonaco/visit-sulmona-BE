@@ -46,7 +46,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function pointsOfInterest()
+    public function pointOfInterests()
 {
     return $this->hasMany(PointOfInterest::class);
 }

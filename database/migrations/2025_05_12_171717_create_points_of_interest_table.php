@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('points_of_interest', function (Blueprint $table) {
+        Schema::create('point_of_interests', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId("user_id")->constrained()->onDelete("cascade");
-            $table->foreignId("type_id")->nullable()->constrained()->nullOnDelete();
+            $table->foreignId("type_id")->nullable()->constrained("types")->nullOnDelete();
             $table->string("name");
             $table->text("description")->nullable();
             $table->string("address")->nullable();

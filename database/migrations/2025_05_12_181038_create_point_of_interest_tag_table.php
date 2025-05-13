@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('point_of_interest_tag', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId("point_of_interest_id")->constrained("points_of_interest")->onDelete("cascade");
+            $table->foreignId("point_of_interest_id")->constrained("point_of_interests")->onDelete("cascade");
             $table->foreignId("tag_id")->constrained("tags")->onDelete("cascade");
 
 
