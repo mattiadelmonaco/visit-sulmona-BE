@@ -29,6 +29,7 @@ class PointsOfInterestTableSeeder extends Seeder
             $newPOI->end_date = $faker->date();
             $newPOI->external_link = $faker->url();
             $newPOI->phone_number = $faker->phoneNumber();
+            $newPOI->email = $faker->email();
 
             $newPOI->save();
         }
