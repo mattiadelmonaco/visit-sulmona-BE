@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\PointOfInterest;
 use Illuminate\Http\Request;
 
 class PointOfInterestsController extends Controller
@@ -12,7 +13,9 @@ class PointOfInterestsController extends Controller
      */
     public function index()
     {
-        //
+        $pointsOfInterest = PointOfInterest::all();
+        
+        return view("points-of-interest.index", compact("pointsOfInterest"));
     }
 
     /**

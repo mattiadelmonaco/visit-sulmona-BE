@@ -47,6 +47,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/') }}">{{ __('HomePage') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                href="{{ route('points-of-interest.index') }}">{{ __('Punti di interesse') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
