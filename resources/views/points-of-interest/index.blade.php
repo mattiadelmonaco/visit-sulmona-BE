@@ -11,10 +11,13 @@
             @foreach ($pointsOfInterest as $poi)
                 <div class="card px-0 shadow" style="width: 18rem;">
                     @if ($poi->firstImage)
-                        <img src="{{ $poi->firstImage->path }}" alt="Immagine di {{ $poi->name }}">
+                        <a href="{{ route('points-of-interest.show', $poi->id) }}" class="card px-0" style="width: 18rem;"><img
+                                src="{{ $poi->firstImage->path }}" alt="Immagine di {{ $poi->name }}"></a>
                     @else
-                        <img src="https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg"
-                            alt="Immagine mancante">
+                        <a href="{{ route('points-of-interest.show', $poi->id) }}" class="card px-0"
+                            style="width: 18rem;"><img
+                                src="https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg"
+                                alt="Immagine mancante"></a>
                     @endif
                     <div class="card-body" style="height: 115px">
                         <h5 class="card-title">{{ $poi->name }}</h5>
@@ -34,14 +37,13 @@
                             <a href="#"
                                 class="card-link d-inline-block text-truncate w-100">{{ $poi->external_link }}</a>
                         </li>
-                        <li class="list-group-item">
-                            <a href="{{ route('points-of-interest.show', $poi->id) }}" class="card-link">Maggiori
-                                informazioni</a>
-                        </li>
                     </ul>
                     <div class="card-body text-center">
-                        <a href="#" class="card-link btn btn-warning"><i
-                                class="fa-regular fa-pen-to-square"></i></a></a>
+                        <a href="{{ route('points-of-interest.show', $poi->id) }}" class="card-link btn btn-primary"><i
+                                class="fa-solid fa-circle-info"></i>
+                        </a>
+                        <a href="#" class="card-link btn btn-warning"><i class="fa-regular fa-pen-to-square"></i>
+                        </a>
                         <a href="#" class="card-link btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                     </div>
                 </div>
