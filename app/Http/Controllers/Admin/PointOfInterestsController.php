@@ -44,7 +44,9 @@ class PointOfInterestsController extends Controller
         'type',
         'images',
         'tags',
-        'daysOfWeek',
+        'daysOfWeek' => function ($query) {
+            $query->orderBy('id');
+        },
     ]);
 
         return view("points-of-interest.show", compact("points_of_interest"));
