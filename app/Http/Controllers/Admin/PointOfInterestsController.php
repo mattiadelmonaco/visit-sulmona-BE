@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\DayOfWeek;
 use App\Models\PointOfInterest;
+use App\Models\Tag;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class PointOfInterestsController extends Controller
@@ -23,7 +26,11 @@ class PointOfInterestsController extends Controller
      */
     public function create()
     {
-        //
+        $types = Type::all();
+        $tags = Tag::all();
+        $daysOfWeek = DayOfWeek::all();
+
+        return view('points-of-interest.create', compact('types', 'tags', 'daysOfWeek'));
     }
 
     /**

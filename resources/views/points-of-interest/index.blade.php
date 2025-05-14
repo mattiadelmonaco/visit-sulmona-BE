@@ -5,14 +5,22 @@
 @section('page')
 
     <h1 class="m-0">Elenco dei punti di interesse</h1>
+    <div class="text-end">
+        <a href="{{ route('points-of-interest.create') }}" class="btn btn-primary mt-3"><i class="fa-solid fa-plus"></i>
+            Aggiungi
+            un
+            punto di interesse</a>
+
+    </div>
 
     <div class="container mt-3 mb-5">
         <div class="row justify-content-center gap-4">
             @foreach ($pointsOfInterest as $poi)
                 <div class="card px-0 shadow" style="width: 18rem;">
                     @if ($poi->firstImage)
-                        <a href="{{ route('points-of-interest.show', $poi->id) }}" class="card px-0" style="width: 18rem;"><img
-                                src="{{ $poi->firstImage->path }}" alt="Immagine di {{ $poi->name }}"></a>
+                        <a href="{{ route('points-of-interest.show', $poi->id) }}" class="card px-0"
+                            style="width: 18rem;"><img src="{{ $poi->firstImage->path }}"
+                                alt="Immagine di {{ $poi->name }}"></a>
                     @else
                         <a href="{{ route('points-of-interest.show', $poi->id) }}" class="card px-0"
                             style="width: 18rem;"><img
