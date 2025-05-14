@@ -32,19 +32,25 @@
                         <p class="card-text clamp-2">{{ $poi->description }}</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex">
-                            <p class="m-0 text-muted"><i class="fas fa-phone me-2"></i></p>
-                            <strong><a href="tel:{{ $poi->phone_number }}">{{ $poi->phone_number }}</a></strong>
-                        </li>
-                        <li class="list-group-item d-flex">
-                            <p class="m-0 text-muted"><i class="fas fa-envelope me-2"></i></p>
-                            <strong><a href="mailto:{{ $poi->email }}">{{ $poi->email }}</a></strong>
-                        </li>
-                        <li class="list-group-item d-flex">
-                            <p class="m-0 text-muted"><i class="fas fa-globe me-2"></i></p>
-                            <a href="{{ $poi->external_link }}"
-                                class="card-link d-inline-block text-truncate w-100">{{ $poi->external_link }}</a>
-                        </li>
+                        @if ($poi->phone_number)
+                            <li class="list-group-item d-flex">
+                                <p class="m-0 text-muted"><i class="fas fa-phone me-2"></i></p>
+                                <strong><a href="tel:{{ $poi->phone_number }}">{{ $poi->phone_number }}</a></strong>
+                            </li>
+                        @endif
+                        @if ($poi->email)
+                            <li class="list-group-item d-flex">
+                                <p class="m-0 text-muted"><i class="fas fa-envelope me-2"></i></p>
+                                <strong><a href="mailto:{{ $poi->email }}">{{ $poi->email }}</a></strong>
+                            </li>
+                        @endif
+                        @if ($poi->external_link)
+                            <li class="list-group-item d-flex">
+                                <p class="m-0 text-muted"><i class="fas fa-globe me-2"></i></p>
+                                <a href="{{ $poi->external_link }}"
+                                    class="card-link d-inline-block text-truncate w-100">{{ $poi->external_link }}</a>
+                            </li>
+                        @endif
                     </ul>
                     <div class="card-body text-center">
                         <a href="{{ route('points-of-interest.show', $poi->id) }}" class="card-link btn btn-primary"><i

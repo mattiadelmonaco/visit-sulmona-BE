@@ -2,6 +2,11 @@
     $poi = $points_of_interest;
     use Illuminate\Support\Carbon;
     Carbon::setLocale('it');
+
+    $hasOpeningHours = $poi->daysOfWeek->contains(function ($day) {
+        return ($day->pivot->first_opening && $day->pivot->first_closing) ||
+            ($day->pivot->second_opening && $day->pivot->second_closing);
+    });
 @endphp
 
 @extends('layouts.master')
@@ -42,7 +47,7 @@
         </div>
 
         {{-- giorni e orari --}}
-        @if ($poi->daysOfWeek && $poi->daysOfWeek->count())
+        @if ($poi->daysOfWeek && $poi->daysOfWeek->count() && $hasOpeningHours)
             <div class="card shadow-sm mb-5">
                 <div class="card-header bg-light">
                     <h4 class="mb-0"><i class="fas fa-clock me-2"></i>Orari di apertura</h4>
