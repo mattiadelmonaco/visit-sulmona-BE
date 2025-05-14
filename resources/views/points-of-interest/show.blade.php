@@ -8,13 +8,13 @@
 @section('title', $poi->name)
 
 @section('page')
-    <div class="container my-5">
+    <div class="container mt-2 mb-5">
         {{-- header della show --}}
-        <div class="mb-5">
-            <h1 class="display-4 mb-3">{{ $poi->name }}</h1>
+        <div class="mb-4">
+            <h1 class="display-4 mb-4">{{ $poi->name }}</h1>
             <div class="d-flex gap-3 align-items-start flex-wrap">
                 {{-- Type Badge --}}
-                @if($poi->type)
+                @if ($poi->type)
                     <div class="badge bg-primary p-2 d-inline-flex align-items-center">
                         <i class="fas fa-tag me-2"></i>
                         <span class="fs-6">{{ $poi->type->name }}</span>
@@ -22,11 +22,11 @@
                 @endif
 
                 {{-- Tags Container --}}
-                @if($poi->tags->isNotEmpty())
+                @if ($poi->tags->isNotEmpty())
                     <div class="d-inline-flex gap-2 flex-wrap align-items-center">
-                        @foreach($poi->tags as $tag)
-                            <span class="badge p-2 d-inline-flex align-items-center" 
-                                  style="background-color: {{ $tag->color }}">
+                        @foreach ($poi->tags as $tag)
+                            <span class="badge p-2 d-inline-flex align-items-center"
+                                style="background-color: {{ $tag->color }}">
                                 <i class="fas fa-hashtag me-1"></i>
                                 <span class="fs-6">{{ $tag->name }}</span>
                             </span>
