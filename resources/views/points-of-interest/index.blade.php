@@ -19,7 +19,7 @@
                 <div class="card px-0 shadow" style="width: 18rem;">
                     @if ($poi->firstImage)
                         <a href="{{ route('points-of-interest.show', $poi->id) }}" class="card px-0"
-                            style="width: 18rem;"><img src="{{ $poi->firstImage->path }}"
+                            style="width: 18rem;"><img src="{{ asset('storage/' . $poi->firstImage->path) }}"
                                 alt="Immagine di {{ $poi->name }}"></a>
                     @else
                         <a href="{{ route('points-of-interest.show', $poi->id) }}" class="card px-0"

@@ -7,7 +7,9 @@ use App\Models\DayOfWeek;
 use App\Models\PointOfInterest;
 use App\Models\Tag;
 use App\Models\Type;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PointOfInterestsController extends Controller
 {
@@ -38,7 +40,54 @@ class PointOfInterestsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newPoint = new PointOfInterest();
+
+        $newPoint->user_id = Auth::id();
+
+        $newPoint->name = $data["name"];
+        $newPoint->type_id = $data["type_id"];
+        $newPoint->address = $data["address"];
+        $newPoint->phone_number = $data["phone_number"];
+        $newPoint->email = $data["email"];
+        $newPoint->external_link = $data["external_link"];
+        $newPoint->latitude = $data["latitude"];
+        $newPoint->longitude = $data["longitude"];
+        $newPoint->start_date = $data["start_date"];
+        $newPoint->end_date = $data["end_date"];
+        $newPoint->description = $data["description"];
+
+        $newPoint->save();
+
+        if (isset($data['tags'])) {
+            $newPoint->tags()->attach($data['tags']);
+        }
+
+        if (isset($data['hours'])) {
+            foreach ($data['hours'] as $dayId => $times) {
+                $newPoint->daysOfWeek()->attach($dayId, [
+                    'first_opening' => $times['first_opening'] ?? null,
+                    'first_closing' => $times['first_closing'] ?? null,
+                    'second_opening' => $times['second_opening'] ?? null,
+                    'second_closing' => $times['second_closing'] ?? null,
+                ]);
+            }
+        }
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $path = Storage::disk('public')->putFile('uploads', $image);
+
+                $newPoint->images()->create([
+                    'path' => $path,
+                ]);
+            }
+        }
+
+    
+    return redirect()->route('points-of-interest.show', $newPoint->id);
+
     }
 
     /**

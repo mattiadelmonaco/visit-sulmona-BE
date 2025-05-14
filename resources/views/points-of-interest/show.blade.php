@@ -103,7 +103,7 @@
                         @foreach ($points_of_interest->images as $image)
                             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                                 <div class="card h-100">
-                                    <img src="{{ $image->path }}" class="card-img-top object-fit-cover"
+                                    <img src="{{ asset('storage/' . $image->path) }}" class="card-img-top object-fit-cover"
                                         style="height: 200px" alt="Immagine di {{ $poi->name }}">
                                 </div>
                             </div>
