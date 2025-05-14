@@ -1,12 +1,19 @@
+@php
+
+    $poi = $points_of_interest;
+
+@endphp
+
 @extends('layouts.master')
 
-@section('title', 'Aggiungi un punto di interesse')
+@section('title', 'Modifica un punto di interesse')
 
 @section('page')
     <div class="container my-5">
         <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white">
-                <h2 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Nuovo punto di interesse</h2>
+            <div class="card-header bg-warning text-white">
+                <h2 class="mb-0 text-black"><i class="fa-regular fa-pen-to-square"></i> Modifica il punto di interesse
+                </h2>
             </div>
             <div class="card-body">
                 <form action="{{ route('points-of-interest.store') }}" method="POST" enctype="multipart/form-data">
@@ -22,15 +29,18 @@
                                 <div class="col-12">
                                     <label for="name" class="form-label">Nome punto di interesse <span
                                             class="text-danger">*</span></label>
-                                    <input type="text" name="name" id="name" class="form-control" required>
+                                    <input type="text" name="name" id="name" class="form-control"
+                                        value="{{ $poi->name }}" required>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="types" class="form-label">Tipologia</label>
-                                    <select name="type_id" id="types" class="form-select" required>
+                                    <label for="type_id" class="form-label">Tipologia</label>
+                                    <select name="type_id" id="type_id" class="form-select" required>
                                         <option value="">Seleziona una tipologia</option>
                                         @foreach ($types as $type)
-                                            <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                            <option value="{{ $type->id }}"
+                                                {{ $poi->type_id == $type->id ? 'selected' : '' }}>{{ $type->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -42,6 +52,7 @@
                                             <div class="form-check">
                                                 <input type="checkbox" name="tags[]" value="{{ $tag->id }}"
                                                     class="form-check-input" id="tag-{{ $tag->id }}"
+                                                    {{ $poi->tags->contains($tag->id) ? 'checked' : '' }}
                                                     style="cursor: pointer">
                                                 <label class="form-check-label badge"
                                                     style="background-color: {{ $tag->color }}; cursor: pointer"
@@ -68,7 +79,8 @@
                                     <div class="input-group">
                                         <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                         <input type="tel" name="phone_number" id="phone_number" class="form-control"
-                                            pattern="^\+?[0-9\s\-\(\)]*$" placeholder="es: +39 0864 123456">
+                                            pattern="^\+?[0-9\s\-\(\)]*$" placeholder="es: +39 0864 123456"
+                                            value="{{ $poi->phone_number ? $poi->phone_number : '' }}">
                                     </div>
                                     <div class="form-text">Inserire il prefisso internazionale</div>
                                 </div>
@@ -78,7 +90,7 @@
                                     <div class="input-group">
                                         <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                         <input type="email" name="email" id="email" class="form-control"
-                                            placeholder="esempio@dominio.it">
+                                            placeholder="esempio@dominio.it" value="{{ $poi->email ? $poi->email : '' }}">
                                     </div>
                                 </div>
 
@@ -87,7 +99,8 @@
                                     <div class="input-group">
                                         <span class="input-group-text"><i class="fas fa-globe"></i></span>
                                         <input type="url" name="external_link" class="form-control" id="external_link"
-                                            placeholder="https://www.esempio.it">
+                                            placeholder="https://www.esempio.it"
+                                            value="{{ $poi->external_link ? $poi->external_link : '' }}">
                                     </div>
                                     <div class="form-text">Inserire l'URL completo incluso http:// o https://</div>
                                 </div>
@@ -97,7 +110,8 @@
                                     <div class="input-group">
                                         <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
                                         <input type="text" name="address" id="address" class="form-control"
-                                            placeholder="Via del codice, 1, Sulmona (AQ) 67039">
+                                            placeholder="Via del codice, 1, Sulmona (AQ) 67039"
+                                            value="{{ $poi->address ? $poi->address : '' }}">
                                     </div>
                                 </div>
 
@@ -106,10 +120,12 @@
                                     <div class="input-group">
                                         <span class="input-group-text">Lat</span>
                                         <input type="number" name="latitude" class="form-control" step="0.00000001"
-                                            min="-90" max="90" placeholder="42.04795">
+                                            min="-90" max="90" placeholder="42.04795"
+                                            value="{{ $poi->latitude ? $poi->latitude : '' }}">
                                         <span class="input-group-text">Long</span>
                                         <input type="number" name="longitude" class="form-control" step="0.00000001"
-                                            min="-180" max="180" placeholder="13.92599">
+                                            min="-180" max="180" placeholder="13.92599"
+                                            value="{{ $poi->longitude ? $poi->longitude : '' }}">
                                     </div>
                                 </div>
 
@@ -117,9 +133,11 @@
                                     <label class="form-label">Periodo</label>
                                     <div class="input-group">
                                         <span class="input-group-text">Dal</span>
-                                        <input type="date" name="start_date" class="form-control">
+                                        <input type="date" name="start_date" class="form-control"
+                                            value="{{ $poi->start_date ? $poi->start_date : '' }}">
                                         <span class="input-group-text">Al</span>
-                                        <input type="date" name="end_date" class="form-control">
+                                        <input type="date" name="end_date" class="form-control"
+                                            value="{{ $poi->end_date ? $poi->end_date : '' }}">
                                     </div>
                                 </div>
                             </div>
@@ -134,6 +152,9 @@
                         <div class="card-body">
                             <div class="row g-3">
                                 @foreach ($daysOfWeek as $day)
+                                    @php
+                                        $dayPivot = $points_of_interest->daysOfWeek->firstWhere('id', $day->id)?->pivot;
+                                    @endphp
                                     <div class="col-12">
                                         <div class="card">
                                             <div class="card-header py-2">
@@ -146,10 +167,12 @@
                                                         <div class="input-group input-group-sm">
                                                             <span class="input-group-text">Da</span>
                                                             <input type="time" class="form-control"
-                                                                name="hours[{{ $day->id }}][first_opening]">
+                                                                name="hours[{{ $day->id }}][first_opening]"
+                                                                value="{{ old('hours.' . $day->id . '.first_opening', $dayPivot?->first_opening) }}">
                                                             <span class="input-group-text">A</span>
                                                             <input type="time" class="form-control"
-                                                                name="hours[{{ $day->id }}][first_closing]">
+                                                                name="hours[{{ $day->id }}][first_closing]"
+                                                                value="{{ old('hours.' . $day->id . '.first_closing', $dayPivot?->first_closing) }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -157,10 +180,12 @@
                                                         <div class="input-group input-group-sm">
                                                             <span class="input-group-text">Da</span>
                                                             <input type="time" class="form-control"
-                                                                name="hours[{{ $day->id }}][second_opening]">
+                                                                name="hours[{{ $day->id }}][second_opening]"
+                                                                value="{{ old('hours.' . $day->id . '.second_opening', $dayPivot?->second_opening) }}">
                                                             <span class="input-group-text">A</span>
                                                             <input type="time" class="form-control"
-                                                                name="hours[{{ $day->id }}][second_closing]">
+                                                                name="hours[{{ $day->id }}][second_closing]"
+                                                                value="{{ old('hours.' . $day->id . '.second_closing', $dayPivot?->second_closing) }}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -173,6 +198,13 @@
                     </div>
 
                     {{-- descrizione e immagini --}}
+
+                    {{-- manca l'aggiunta dell'anteprima delle immagini già caricate, 
+                    controlla il controller e il model Image se vanno bene,
+                    forse nella create devi aggiungere i for ai laber e gli id agli input,
+                    fatto questo puoi passare alla update e delete. 
+                    se tutto funziona passa alle crud per types e tags --}}
+
                     <div class="card mb-4">
                         <div class="card-header bg-light">
                             <h5 class="mb-0">Contenuti</h5>
@@ -181,7 +213,7 @@
                             <div class="mb-3">
                                 <label for="description" class="form-label">Descrizione <span
                                         class="text-danger">*</span></label>
-                                <textarea name="description" id="description" class="form-control" rows="5" required></textarea>
+                                <textarea name="description" id="description" class="form-control" rows="5" required>{{ $poi->description ? $poi->description : '' }}</textarea>
                             </div>
 
                             <div>
@@ -191,6 +223,7 @@
                                     Per selezionare più immagini, tieni premuto CTRL mentre selezioni i file
                                 </div>
                             </div>
+
                         </div>
                     </div>
 
@@ -203,4 +236,5 @@
             </div>
         </div>
     </div>
+
 @endsection

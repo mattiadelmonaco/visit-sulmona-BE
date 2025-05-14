@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\DayOfWeek;
+use App\Models\Image;
 use App\Models\PointOfInterest;
 use App\Models\Tag;
 use App\Models\Type;
@@ -111,9 +112,14 @@ class PointOfInterestsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(PointOfInterest $points_of_interest)
     {
-        //
+        $types = Type::all();
+        $tags = Tag::all();
+        $daysOfWeek = DayOfWeek::all();
+        $images = Image::all();
+
+        return view('points-of-interest.edit', compact('points_of_interest', 'types', 'tags', 'daysOfWeek', 'images'));
     }
 
     /**
