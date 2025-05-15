@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PointOfInterestsController;
+use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\TypesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,9 @@ Route::resource("points-of-interest", PointOfInterestsController::class)
     ->middleware(["auth", "verified"]);
 
 Route::resource("types", TypesController::class)
+->middleware(["auth", "verified"]);
+
+Route::resource("tags", TagsController::class)
 ->middleware(["auth", "verified"]);
 
 require __DIR__.'/auth.php';

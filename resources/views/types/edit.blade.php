@@ -22,11 +22,11 @@
                             required>
                     </div>
 
-                    <div class="text-end">
-                        <a href="{{ route('types.index') }}" class="btn btn-secondary me-2">
+                    <div class="d-flex justify-content-end gap-2 flex-wrap">
+                        <a href="{{ route('types.index') }}" class="btn btn-secondary mb-2">
                             <i class="fas fa-arrow-left me-2"></i>Indietro
                         </a>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary mb-2">
                             <i class="fas fa-save me-2"></i>Salva
                         </button>
                     </div>

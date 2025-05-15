@@ -55,6 +55,9 @@
                             <a class="nav-link"
                                 href="{{ route('types.index') }}">{{ __('Tipologie punti di interesse') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('tags.index') }}">{{ __('Elenco tag') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
