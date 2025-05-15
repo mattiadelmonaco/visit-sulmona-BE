@@ -1,9 +1,18 @@
 @import "~bootstrap/scss/bootstrap";
 
+.ms-header {
+    background-color: #99031e;
+}
+
 .clamp-2 {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
     -webkit-line-clamp: 2;
     line-clamp: 2;
+}
+
+footer {
+    background-color: #99031e;
+    padding: 1.25rem 0;
 }

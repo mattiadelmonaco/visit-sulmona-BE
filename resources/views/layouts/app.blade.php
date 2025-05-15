@@ -17,6 +17,11 @@
 
     <link rel="shortcut icon" href="{{ asset('/storage/visits-sulmona-logo-backoffice.svg') }}" type="image/x-icon">
 
+    {{-- FONT AWESOME --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
 </head>
@@ -25,12 +30,14 @@
     <div id="app">
 
 
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark ms-header shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo_laravel">
-                        <img src="{{ asset('storage/visits-sulmona-logo-backoffice.svg') }}"
-                            alt="logo Visits Sulmona BackOffice" width="130px">
+                        <div class="bg-white p-3 rounded-circle shadow">
+                            <img src="{{ asset('storage/visits-sulmona-logo-backoffice.svg') }}"
+                                alt="logo Visits Sulmona BackOffice" width="130px">
+                        </div>
                     </div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
@@ -45,18 +52,18 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">{{ __('HomePage') }}</a>
+                            <a class="nav-link text-light" href="{{ url('/') }}">{{ __('HomePage') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"
+                            <a class="nav-link text-light"
                                 href="{{ route('points-of-interest.index') }}">{{ __('Punti di interesse') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"
+                            <a class="nav-link text-light"
                                 href="{{ route('types.index') }}">{{ __('Tipologie punti di interesse') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('tags.index') }}">{{ __('Elenco tag') }}</a>
+                            <a class="nav-link text-light" href="{{ route('tags.index') }}">{{ __('Elenco tag') }}</a>
                         </li>
                     </ul>
 
@@ -65,17 +72,19 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link text-light" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
+                                    <a class="nav-link text-light"
+                                        href="{{ route('register') }}">{{ __('Registrati') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#"
+                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
@@ -103,6 +112,8 @@
             @yield('content')
         </main>
     </div>
+
+
 </body>
 
 </html>
