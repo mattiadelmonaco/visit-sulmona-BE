@@ -184,8 +184,17 @@ class PointOfInterestsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(PointOfInterest $points_of_interest)
     {
-        //
+        foreach ($points_of_interest->images as $image) {
+        if (Storage::disk('public')->exists($image->path)) {
+            Storage::disk('public')->delete($image->path);
+        }
+        $image->delete();
+    }
+
+        $points_of_interest->delete();
+
+        return redirect()->route("points-of-interest.index");
     }
 }

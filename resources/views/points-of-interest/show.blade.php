@@ -3,6 +3,7 @@
     use Illuminate\Support\Carbon;
     Carbon::setLocale('it');
 
+    // variabile per prendere dati dalla tabella ponte
     $hasOpeningHours = $poi->daysOfWeek->contains(function ($day) {
         return ($day->pivot->first_opening && $day->pivot->first_closing) ||
             ($day->pivot->second_opening && $day->pivot->second_closing);
@@ -14,15 +15,20 @@
 
 @section('page')
     <div class="container mt-2 mb-5">
-        {{-- header della show --}}
-        <div class="mb-4">
-            <h1 class="display-4 mb-4">{{ $poi->name }}</h1>
-            <div class="text-end">
-                <a href="{{ route('points-of-interest.edit', $poi->id) }}" class="btn btn-warning"><i
-                        class="fa-regular fa-pen-to-square"></i> Modifica punto di interesse</a>
 
+        {{-- header della show con tasto modifica e elimina --}}
+        <div class="mb-4">
+            <h1 class="display-4 fs-1 mb-4">{{ $poi->name }}</h1>
+            <div class="d-flex justify-content-end gap-3 mb-4">
+                <a href="{{ route('points-of-interest.edit', $poi->id) }}" class="btn btn-warning"><i
+                        class="fa-regular fa-pen-to-square"></i> Modifica</a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                    data-bs-target="#modal-{{ $poi->id }}">
+                    <i class="fa-solid fa-trash"></i> Elimina
+                </button>
             </div>
 
+            {{-- div con tipologia e tags --}}
             <div class="d-flex gap-3 align-items-start flex-wrap">
 
                 @if ($poi->type)
@@ -234,5 +240,33 @@
             </div>
         </div>
     @endif
+
+
+    {{-- modale per eliminazione punto di interesse --}}
+    <div class="modal fade" id="modal-{{ $poi->id }}" tabindex="-1"
+        aria-labelledby="modalLabel-{{ $poi->id }}" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalLabel-{{ $poi->id }}">Elimina punto di interesse
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Sicuro di eliminare definitivamente il punto di interesse?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                    <form action="{{ route('points-of-interest.destroy', $poi->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+
+                        <input type="submit" class="btn btn-danger" value="Elimina definitivamente">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     </div>
 @endsection
