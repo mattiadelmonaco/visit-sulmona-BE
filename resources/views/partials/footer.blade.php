@@ -7,7 +7,7 @@
             </div>
         </a>
         <a href="#"
-            class="text-decoration-none text-white bg-primary px-4 py-2 rounded-3 text-center d-block fs-5 hover-scale">Vai
+            class="text-decoration-none text-danger fw-bold bg-light px-4 py-2 rounded-3 text-center d-block fs-5 hover-scale">Vai
             al
             sito per visitatori</a>
     </div>
