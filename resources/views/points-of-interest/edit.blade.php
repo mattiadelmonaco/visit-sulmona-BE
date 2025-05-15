@@ -200,12 +200,6 @@
 
                     {{-- descrizione e immagini --}}
 
-                    {{-- manca l'aggiunta dell'anteprima delle immagini già caricate, 
-                    controlla il controller e il model Image se vanno bene,
-                    forse nella create devi aggiungere i for ai laber e gli id agli input,
-                    fatto questo puoi passare alla update e delete. 
-                    se tutto funziona passa alle crud per types e tags --}}
-
                     <div class="card mb-4">
                         <div class="card-header bg-light">
                             <h5 class="mb-0">Contenuti</h5>
@@ -233,13 +227,62 @@
                         </div>
                         <div class="card-body">
                             @if ($poi->images->isNotEmpty())
-                                <div class="row g-4">
+                                <div class="row g-4" id="images">
                                     @foreach ($poi->images as $image)
                                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                                             <div class="card h-100 shadow-sm">
                                                 <img src="{{ asset('storage/' . $image->path) }}"
                                                     class="card-img-top object-fit-cover" style="height: 200px"
                                                     alt="Immagine di {{ $poi->name }}">
+                                                <div class="d-flex justify-content-end">
+                                                    <button type="button" class="btn btn-danger m-2"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#modal-{{ $image->id }}">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                    </button>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        {{-- modale per eliminazione punto di interesse --}}
+                                        <div class="modal fade" id="modal-{{ $image->id }}" tabindex="-1">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header bg-danger text-white">
+                                                        <h5 class="modal-title">
+                                                            <i class="fas fa-exclamation-triangle me-2"></i>
+                                                            Conferma eliminazione
+                                                        </h5>
+                                                        <button type="button" class="btn-close btn-close-white"
+                                                            data-bs-dismiss="modal"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Sei sicuro di voler eliminare questa immagine?
+                                                        <div class="m-4 d-flex justify-content-center">
+                                                            <img src="{{ asset('storage/' . $image->path) }}"
+                                                                alt="Immagine da eliminare" class="rounded img-fluid">
+                                                        </div>
+                                                        <div class="alert alert-warning mt-2 mb-0">
+                                                            Questa azione non può essere annullata.
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">
+                                                            <i class="fas fa-times me-2"></i>Annulla
+                                                        </button>
+                                                        <form action="{{ route('images.destroy', $image->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger">
+                                                                <i class="fas fa-trash me-2"></i>Elimina
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     @endforeach

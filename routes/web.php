@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ImagesController;
 use App\Http\Controllers\Admin\PointOfInterestsController;
 use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\TypesController;
@@ -36,6 +37,9 @@ Route::resource("types", TypesController::class)
 ->middleware(["auth", "verified"]);
 
 Route::resource("tags", TagsController::class)
+->middleware(["auth", "verified"]);
+
+Route::resource("images", ImagesController::class)
 ->middleware(["auth", "verified"]);
 
 require __DIR__.'/auth.php';
