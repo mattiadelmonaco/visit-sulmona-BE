@@ -58,7 +58,8 @@
                         <a href="{{ route('points-of-interest.show', $poi->id) }}" class="card-link btn btn-primary"><i
                                 class="fa-solid fa-circle-info"></i>
                         </a>
-                        <a href="#" class="card-link btn btn-warning"><i class="fa-regular fa-pen-to-square"></i>
+                        <a href="{{ route('points-of-interest.edit', $poi->id) }}" class="card-link btn btn-warning"><i
+                                class="fa-regular fa-pen-to-square"></i>
                         </a>
                         <a href="#" class="card-link btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                     </div>

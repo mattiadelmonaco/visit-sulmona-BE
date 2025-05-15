@@ -125,9 +125,60 @@ class PointOfInterestsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, PointOfInterest $points_of_interest)
     {
-        //
+        $data = $request->all();
+
+        $points_of_interest->name = $data["name"];
+        $points_of_interest->type_id = $data["type_id"];
+        $points_of_interest->address = $data["address"];
+        $points_of_interest->phone_number = $data["phone_number"];
+        $points_of_interest->email = $data["email"];
+        $points_of_interest->external_link = $data["external_link"];
+        $points_of_interest->latitude = $data["latitude"];
+        $points_of_interest->longitude = $data["longitude"];
+        $points_of_interest->start_date = $data["start_date"];
+        $points_of_interest->end_date = $data["end_date"];
+        $points_of_interest->description = $data["description"];
+
+        if($request->has("tags")) {
+            $points_of_interest->tags()->sync($data["tags"]);
+        } else {
+            $points_of_interest->tags()->detach();
+        }
+
+        if (isset($data['hours'])) {
+        
+        $points_of_interest->daysOfWeek()->detach();
+
+        foreach ($data['hours'] as $dayId => $times) {
+            $points_of_interest->daysOfWeek()->attach($dayId, [
+                'first_opening' => $times['first_opening'] ?? null,
+                'first_closing' => $times['first_closing'] ?? null,
+                'second_opening' => $times['second_opening'] ?? null,
+                'second_closing' => $times['second_closing'] ?? null,
+            ]);
+            }
+        } else {
+           
+            $points_of_interest->daysOfWeek()->detach();
+        }
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $path = Storage::disk('public')->putFile('uploads', $image);
+
+                $points_of_interest->images()->create([
+                    'path' => $path,
+                ]);
+            }
+        }
+
+        $points_of_interest->update();
+
+        return redirect()->route("points-of-interest.show", $points_of_interest->id);
+
+
     }
 
     /**

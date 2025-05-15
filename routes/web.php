@@ -28,6 +28,6 @@ Route::middleware(['auth', 'verified'])
 });
 
 Route::resource("points-of-interest", PointOfInterestsController::class)
-->middleware(["auth", "verified"]);
+    ->middleware(["auth", "verified"]);
 
 require __DIR__.'/auth.php';

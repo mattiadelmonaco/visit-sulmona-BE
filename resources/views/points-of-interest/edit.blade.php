@@ -16,10 +16,11 @@
                 </h2>
             </div>
             <div class="card-body">
-                <form action="{{ route('points-of-interest.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('points-of-interest.update', $poi->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
 
-                    {{-- Informazioni base --}}
+                    {{-- informazioni base --}}
                     <div class="card mb-4">
                         <div class="card-header bg-light">
                             <h5 class="mb-0">Informazioni principali</h5>
@@ -67,7 +68,7 @@
                         </div>
                     </div>
 
-                    {{-- Contatti e localizzazione --}}
+                    {{-- contatti e localizzazione --}}
                     <div class="card mb-4">
                         <div class="card-header bg-light">
                             <h5 class="mb-0">Contatti, localizzazione e periodo</h5>
@@ -144,7 +145,7 @@
                         </div>
                     </div>
 
-                    {{-- Orari --}}
+                    {{-- orari --}}
                     <div class="card mb-4">
                         <div class="card-header bg-light">
                             <h5 class="mb-0">Orari di apertura</h5>
@@ -224,6 +225,30 @@
                                 </div>
                             </div>
 
+                        </div>
+
+                        {{-- immagini già caricate --}}
+                        <div class="card-header bg-light mt-4">
+                            <h5 class="mb-0"><i class="fas fa-images me-2"></i>Immagini presenti</h5>
+                        </div>
+                        <div class="card-body">
+                            @if ($poi->images->isNotEmpty())
+                                <div class="row g-4">
+                                    @foreach ($poi->images as $image)
+                                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                                            <div class="card h-100 shadow-sm">
+                                                <img src="{{ asset('storage/' . $image->path) }}"
+                                                    class="card-img-top object-fit-cover" style="height: 200px"
+                                                    alt="Immagine di {{ $poi->name }}">
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @else
+                                <div class="alert alert-info mb-0">
+                                    <i class="fas fa-info-circle me-2"></i>Nessuna immagine presente
+                                </div>
+                            @endif
                         </div>
                     </div>
 
