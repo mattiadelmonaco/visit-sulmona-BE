@@ -82,26 +82,33 @@
 
 
                 {{-- modale per eliminazione --}}
-                <div class="modal fade" id="modal-{{ $poi->id }}" tabindex="-1"
-                    aria-labelledby="modalLabel-{{ $poi->id }}" aria-hidden="true">
+                <div class="modal fade" id="modal-{{ $poi->id }}" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="modalLabel-{{ $poi->id }}">Elimina punto di interesse
-                                </h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                            <div class="modal-header bg-danger text-white">
+                                <h5 class="modal-title">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>
+                                    Conferma eliminazione
+                                </h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
-                                Sicuro di eliminare definitivamente il punto di interesse?
+                                Sei sicuro di voler eliminare il punto di interesse
+                                <strong>{{ $poi->name }}</strong>?
+                                <div class="alert alert-warning mt-2 mb-0">
+                                    Questa azione non può essere annullata.
+                                </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    <i class="fas fa-times me-2"></i>Annulla
+                                </button>
                                 <form action="{{ route('points-of-interest.destroy', $poi->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-
-                                    <input type="submit" class="btn btn-danger" value="Elimina definitivamente">
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="fas fa-trash me-2"></i>Elimina
+                                    </button>
                                 </form>
                             </div>
                         </div>

@@ -12,7 +12,7 @@
     <div class="container my-5">
         <div class="card shadow-sm">
             <div class="card-header bg-warning text-white">
-                <h2 class="mb-0 text-black"><i class="fa-regular fa-pen-to-square"></i> Modifica il punto di interesse
+                <h2 class="mb-0 text-dark"><i class="fa-regular fa-pen-to-square"></i> Modifica il punto di interesse
                 </h2>
             </div>
             <div class="card-body">
