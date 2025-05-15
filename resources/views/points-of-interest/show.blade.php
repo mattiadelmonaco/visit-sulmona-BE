@@ -17,8 +17,14 @@
         {{-- header della show --}}
         <div class="mb-4">
             <h1 class="display-4 mb-4">{{ $poi->name }}</h1>
+            <div class="text-end">
+                <a href="{{ route('points-of-interest.edit', $poi->id) }}" class="btn btn-warning"><i
+                        class="fa-regular fa-pen-to-square"></i> Modifica punto di interesse</a>
+
+            </div>
+
             <div class="d-flex gap-3 align-items-start flex-wrap">
-                {{-- Type Badge --}}
+
                 @if ($poi->type)
                     <div class="badge bg-primary p-2 d-inline-flex align-items-center">
                         <i class="fas fa-tag me-2"></i>
@@ -26,7 +32,7 @@
                     </div>
                 @endif
 
-                {{-- Tags Container --}}
+
                 @if ($poi->tags->isNotEmpty())
                     <div class="d-inline-flex gap-2 flex-wrap align-items-center">
                         @foreach ($poi->tags as $tag)
