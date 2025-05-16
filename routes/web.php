@@ -30,8 +30,9 @@ Route::middleware(['auth', 'verified'])
 	->name('dashboard');
 });
 
-Route::resource("points-of-interest", PointOfInterestsController::class)
-    ->middleware(["auth", "verified"]);
+Route::resource("images", ImagesController::class)
+->middleware(["auth", "verified"]);
+
 
 Route::resource("types", TypesController::class)
 ->middleware(["auth", "verified"]);
@@ -39,7 +40,7 @@ Route::resource("types", TypesController::class)
 Route::resource("tags", TagsController::class)
 ->middleware(["auth", "verified"]);
 
-Route::resource("images", ImagesController::class)
-->middleware(["auth", "verified"]);
+Route::resource("points-of-interest", PointOfInterestsController::class)
+    ->middleware(["auth", "verified"]);
 
 require __DIR__.'/auth.php';
