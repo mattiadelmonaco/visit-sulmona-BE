@@ -50,4 +50,15 @@ class User extends Authenticatable
 {
     return $this->hasMany(PointOfInterest::class);
 }
+
+public function types()
+{
+    return $this->hasMany(Type::class);
+}
+
+public function tags()
+{
+    return $this->hasMany(Type::class);
+}
+
 }

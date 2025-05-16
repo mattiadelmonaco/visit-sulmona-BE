@@ -36,6 +36,7 @@ class TagsTableSeeder extends Seeder
     foreach($tags as $tag) {
         $newTag = new Tag();
 
+        $newTag->user_id = 1;
         $newTag->name = $tag;
         $newTag->color = $faker->hexColor();
 

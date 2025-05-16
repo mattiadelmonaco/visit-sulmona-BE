@@ -19,7 +19,7 @@ class PointOfInterestsController extends Controller
      */
     public function index()
     {
-        $pointsOfInterest = PointOfInterest::with('firstImage')->get();
+        $pointsOfInterest = PointOfInterest::with('firstImage')->where('user_id', Auth::id())->get();
         
         return view("points-of-interest.index", compact("pointsOfInterest"));
     }
@@ -29,8 +29,10 @@ class PointOfInterestsController extends Controller
      */
     public function create()
     {
-        $types = Type::all();
-        $tags = Tag::all();
+        $types = Type::where('user_id', Auth::id())->get();
+
+        $tags = Tag::where('user_id', Auth::id())->get();
+
         $daysOfWeek = DayOfWeek::all();
 
         return view('points-of-interest.create', compact('types', 'tags', 'daysOfWeek'));
@@ -114,8 +116,10 @@ class PointOfInterestsController extends Controller
      */
     public function edit(PointOfInterest $points_of_interest)
     {
-        $types = Type::all();
-        $tags = Tag::all();
+        $types = Type::where('user_id', Auth::id())->get();
+
+        $tags = Tag::where('user_id', Auth::id())->get();
+
         $daysOfWeek = DayOfWeek::all();
         $images = Image::all();
 

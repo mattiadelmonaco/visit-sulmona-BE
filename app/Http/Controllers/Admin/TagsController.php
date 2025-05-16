@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TagsController extends Controller
 {
@@ -13,7 +14,7 @@ class TagsController extends Controller
      */
     public function index()
     {
-        $tags = Tag::all();
+        $tags = Tag::where('user_id', Auth::id())->get();
 
         return view("tags.index", compact("tags"));
     }
@@ -35,6 +36,8 @@ class TagsController extends Controller
         $data['name'] = ucfirst(strtolower($data['name']));
 
         $newTag = new Tag();
+
+        $newTag->user_id = Auth::id();
 
         $newTag->name = $data["name"];
         $newTag->color = $data["color"];

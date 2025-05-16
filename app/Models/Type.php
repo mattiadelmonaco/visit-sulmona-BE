@@ -11,4 +11,9 @@ class Type extends Model
         return $this->hasMany(PointOfInterest::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

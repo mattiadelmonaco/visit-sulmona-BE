@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TypesController extends Controller
 {
@@ -13,7 +14,7 @@ class TypesController extends Controller
      */
     public function index()
     {
-        $types = Type::all();
+        $types = Type::where('user_id', Auth::id())->get();
 
         return view("types.index", compact("types"));
     }
@@ -35,6 +36,8 @@ class TypesController extends Controller
         $data['name'] = ucfirst(strtolower($data['name']));
 
         $newType = new Type();
+
+        $newType->user_id = Auth::id();
 
         $newType->name = $data["name"];
 
