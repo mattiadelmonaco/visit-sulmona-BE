@@ -8,7 +8,7 @@ class Image extends Model
 {
     protected $fillable = ['path', 'point_of_interest_id'];
 
-    public function pointsOfInterest()
+    public function pointOfInterest()
     {
         return $this->belongsTo(PointOfInterest::class);
     }

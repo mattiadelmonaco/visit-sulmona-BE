@@ -121,7 +121,9 @@ class PointOfInterestsController extends Controller
         $tags = Tag::where('user_id', Auth::id())->get();
 
         $daysOfWeek = DayOfWeek::all();
-        $images = Image::all();
+        $images = Image::whereHas('pointOfInterest', function ($query) {
+        $query->where('user_id', Auth::id());
+        })->get();
 
         return view('points-of-interest.edit', compact('points_of_interest', 'types', 'tags', 'daysOfWeek', 'images'));
     }
