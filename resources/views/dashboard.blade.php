@@ -16,8 +16,17 @@
                                 {{ session('status') }}
                             </div>
                         @endif
+                        <div class="d-flex flex-column gap-2 align-items-center">
+                            <p class="display-6">{{ __('Sei loggato! 🎉') }}</p>
+                            <div>
+                                <a href="{{ url('/') }}" class="btn btn-outline-danger btn-lg hover-shadow"
+                                    style="border-radius: 10px; transition: all 0.3s ease;">
+                                    <i class="fa-solid fa-house"></i> Vai alla HomePage
+                                </a>
 
-                        {{ __('Sei loggato!') }}
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
