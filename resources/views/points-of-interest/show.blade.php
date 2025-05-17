@@ -18,7 +18,16 @@
 
         {{-- header della show con tasto modifica e elimina --}}
         <div class="mb-4">
-            <h1 class="display-4 fs-1 mb-4">{{ $poi->name }}</h1>
+            <div class="d-flex gap-3 flex-wrap">
+                <h1 class="display-4 fs-1">{{ $poi->name }}</h1>
+                @if ($poi->type)
+                    <div class="badge bg-primary fs-3 p-2 d-inline-flex align-items-center mb-4" style="height: 50px;">
+                        <i class="fas fa-tag me-2"></i>
+                        <span class="fs-6">{{ $poi->type->name }}</span>
+                    </div>
+                @endif
+
+            </div>
             <div class="d-flex justify-content-end gap-3 mb-4">
                 <a href="{{ route('points-of-interest.edit', $poi->id) }}" class="btn btn-warning"><i
                         class="fa-regular fa-pen-to-square"></i> Modifica</a>
@@ -28,15 +37,10 @@
                 </button>
             </div>
 
-            {{-- div con tipologia e tags --}}
+            {{-- div con tags --}}
             <div class="d-flex gap-3 align-items-start flex-wrap">
 
-                @if ($poi->type)
-                    <div class="badge bg-primary p-2 d-inline-flex align-items-center">
-                        <i class="fas fa-tag me-2"></i>
-                        <span class="fs-6">{{ $poi->type->name }}</span>
-                    </div>
-                @endif
+
 
 
                 @if ($poi->tags->isNotEmpty())

@@ -17,26 +17,22 @@ class TypesTableSeeder extends Seeder
     "Evento",
     "Monumento",
     "Ristorante",
+    "Bar",
+    "Associazione",
     "BnB",
     "Hotel",
     "Museo",
     "Parco",
     "Spiaggia",
     "Chiesa",
-    "Castello",
     "Mercato",
     "Negozio",
     "Teatro",
     "Cinema",
     "Centro commerciale",
-    "Osservatorio",
-    "Area archeologica",
     "Enoteca",
     "Agriturismo",
-    "Centro benessere",
     "Stadio",
-    "Punto panoramico",
-    "Centro congressi",
     "Galleria d'arte",
     "Biblioteca",
 ];
@@ -44,7 +40,7 @@ class TypesTableSeeder extends Seeder
     foreach($types as $type) {
         $newType = new Type();
 
-        $newType->user_id = 1;
+        $newType->user_id = 9;
         $newType->name = $type;
 
         $newType->save();
