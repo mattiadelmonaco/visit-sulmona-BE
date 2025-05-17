@@ -36,7 +36,7 @@
                     <div class="logo_laravel">
                         <div class="bg-white p-3 rounded-circle shadow">
                             <img src="{{ asset('storage/visits-sulmona-logo-backoffice.svg') }}"
-                                alt="logo Visits Sulmona BackOffice" width="130px">
+                                alt="logo Visits Sulmona BackOffice" width="100px">
                         </div>
                     </div>
                     {{-- config('app.name', 'Laravel') --}}

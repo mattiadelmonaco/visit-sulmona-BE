@@ -20,7 +20,7 @@
 <body>
     @include('layouts.app')
 
-    <main class="container py-3 px-2">
+    <main class="container py-3 px-2 min-vh-100">
         @yield('page')
     </main>
 

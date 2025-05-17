@@ -16,3 +16,20 @@ footer {
     background-color: #99031e;
     padding: 1.25rem 0;
 }
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #282828;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #99031e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #8a031c;
+}

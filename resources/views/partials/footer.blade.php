@@ -1,9 +1,9 @@
-<footer class="content shadow py-4">
+<footer class="content shadow py-3">
     <div
-        class="container d-flex justify-content-around align-items-center flex-wrap gap-4 border-bottom border-white pb-4">
+        class="container d-flex justify-content-around align-items-center flex-wrap gap-4 border-bottom border-white pb-3">
         <a href="{{ url('/') }}">
             <div class="bg-white p-3 rounded-circle shadow">
-                <img src="{{ asset('storage/visits-sulmona-logo-backoffice.svg') }}" alt="logo" style="width: 150px">
+                <img src="{{ asset('storage/visits-sulmona-logo-backoffice.svg') }}" alt="logo" style="width: 120px">
             </div>
         </a>
         <a href="#"
