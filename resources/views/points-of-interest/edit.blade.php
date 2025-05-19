@@ -212,7 +212,7 @@
                             </div>
 
                             <div>
-                                <label class="form-label">Immagini</label>
+                                <label class="form-label">Aggiungi immagini</label>
                                 <input type="file" class="form-control" name="images[]" multiple accept="image/*">
                                 <div class="form-text">
                                     Per selezionare più immagini, tieni premuto CTRL mentre selezioni i file
