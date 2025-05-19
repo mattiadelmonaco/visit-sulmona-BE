@@ -10,7 +10,7 @@ class PoiController extends Controller
 {
     public function index() {
 
-        $poi = PointOfInterest::all();
+        $poi = PointOfInterest::with('firstImage', 'type')->get();
 
         return response()->json([
             "success" => true,
@@ -18,7 +18,32 @@ class PoiController extends Controller
         ]);
     }
 
-    public function show() {
-        return "sei nella show";
+    public function show(PointOfInterest $poi) {
+
+        $poi->load([
+        'type',
+        'images',
+        'tags',
+        'daysOfWeek' => function ($query) {
+            $query->orderBy('id');
+        },
+    ]);
+
+        return response()->json([
+            "success" => true,
+            "data" => $poi
+        ]);
     }
+
+    public function indexByType($typeId)
+{
+    $poi = PointOfInterest::with('firstImage', 'type')
+            ->where('type_id', $typeId)
+            ->get();
+
+    return response()->json([
+        "success" => true,
+        "data" => $poi
+    ]);
+}
 }

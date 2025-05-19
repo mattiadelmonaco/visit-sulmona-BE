@@ -12,3 +12,5 @@ Route::get("/poi", [PoiController::class, "index"]);
 
 Route::get("/poi/{poi}", [PoiController::class, "show"]);
 
+Route::get("/poi/type/{typeId}", [PoiController::class, "indexByType"]);
+
