@@ -83,7 +83,7 @@
                                             pattern="^\+?[0-9\s\-\(\)]*$" placeholder="es: +39 0864 123456"
                                             value="{{ $poi->phone_number ? $poi->phone_number : '' }}">
                                     </div>
-                                    <div class="form-text">Inserire il prefisso internazionale</div>
+                                    <div class="form-text">Prefisso internazionale non obbligatorio</div>
                                 </div>
 
                                 <div class="col-md-6">
@@ -256,7 +256,7 @@
                         </div>
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-lg">
+                            <button type="submit" class="btn btn-primary btn-lg my-4">
                                 <i class="fas fa-save me-2"></i>Salva punto di interesse
                             </button>
                         </div>

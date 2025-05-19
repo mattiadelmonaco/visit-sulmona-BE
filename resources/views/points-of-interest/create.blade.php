@@ -70,7 +70,7 @@
                                         <input type="tel" name="phone_number" id="phone_number" class="form-control"
                                             pattern="^\+?[0-9\s\-\(\)]*$" placeholder="es: +39 0864 123456">
                                     </div>
-                                    <div class="form-text">Inserire il prefisso internazionale</div>
+                                    <div class="form-text">Prefisso internazionale non obbligatorio</div>
                                 </div>
 
                                 <div class="col-md-6">
