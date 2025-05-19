@@ -6,7 +6,7 @@
 
 @extends('layouts.master')
 
-@section('title', 'Modifica un punto di interesse')
+@section('title', 'Modifica attrazione o attività')
 
 @section('page')
     <div class="container my-5">
@@ -256,8 +256,8 @@
                         </div>
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-lg my-4">
-                                <i class="fas fa-save me-2"></i>Salva punto di interesse
+                            <button type="submit" class="btn btn-success btn-lg my-4">
+                                <i class="fas fa-save me-2"></i>Salva modifiche
                             </button>
                         </div>
                 </form>

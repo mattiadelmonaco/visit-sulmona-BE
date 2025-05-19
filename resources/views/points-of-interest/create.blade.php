@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
-@section('title', 'Aggiungi un punto di interesse')
+@section('title', 'Aggiungi un\'attrazione o un\'attività')
 
 @section('page')
     <div class="container my-5">
         <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white">
+            <div class="card-header ms-background text-white">
                 <h2 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Nuova attrazione o attività</h2>
             </div>
             <div class="card-body">
@@ -194,8 +194,8 @@
                     </div>
 
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary btn-lg">
-                            <i class="fas fa-save me-2"></i>Salva punto di interesse
+                        <button type="submit" class="btn btn-success btn-lg">
+                            <i class="fas fa-save me-2"></i>Salva
                         </button>
                     </div>
                 </form>

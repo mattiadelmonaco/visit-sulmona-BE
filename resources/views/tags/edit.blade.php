@@ -33,7 +33,7 @@
                         <a href="{{ route('tags.index') }}" class="btn btn-secondary mb-2">
                             <i class="fas fa-arrow-left me-2"></i>Indietro
                         </a>
-                        <button type="submit" class="btn btn-primary mb-2">
+                        <button type="submit" class="btn btn-success mb-2">
                             <i class="fas fa-save me-2"></i>Salva
                         </button>
                     </div>

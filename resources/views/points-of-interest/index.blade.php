@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
-@section('title', 'Punti di interesse')
+@section('title', 'Attrazioni e Attività')
 
 @section('page')
     <div class="container my-5">
         <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <div class="card-header ms-background text-white d-flex justify-content-between align-items-center">
                 <h2 class="mb-0"><i class="fas fa-map-marker-alt me-2"></i> Tutte le attrazioni e attività</h2>
                 <a href="{{ route('points-of-interest.create') }}" class="btn btn-light">
                     <i class="fas fa-plus me-2"></i>Nuova attrazione o attività

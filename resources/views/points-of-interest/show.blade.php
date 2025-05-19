@@ -17,25 +17,28 @@
     <div class="container mt-2 mb-5">
 
         {{-- header della show con tasto modifica e elimina --}}
-        <div class="mb-4">
-            <div class="d-flex gap-3 flex-wrap">
-                <h1 class="display-4 fs-1">{{ $poi->name }}</h1>
-                @if ($poi->type)
-                    <div class="badge bg-primary fs-3 p-2 d-inline-flex align-items-center mb-4" style="height: 50px;">
-                        <i class="fas fa-tag me-2"></i>
-                        <span class="fs-6">{{ $poi->type->name }}</span>
-                    </div>
-                @endif
+        <div class="card card-body mb-4">
+            <div class="d-flex justify-content-between gap-3 flex-wrap">
+                <div class="d-flex gap-3 flex-wrap">
+                    <h1 class="display-4 fs-1">{{ $poi->name }}</h1>
+                    @if ($poi->type)
+                        <div class="badge bg-primary fs-3 p-2 d-inline-flex align-items-center mb-4" style="height: 50px;">
+                            <i class="fas fa-tag me-2"></i>
+                            <span class="fs-6">{{ $poi->type->name }}</span>
+                        </div>
+                    @endif
+                </div>
 
+                <div class="d-flex justify-content-end align-items-center gap-3 mb-4">
+                    <a href="{{ route('points-of-interest.edit', $poi->id) }}" class="btn btn-warning"><i
+                            class="fa-regular fa-pen-to-square"></i> Modifica</a>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#modal-{{ $poi->id }}">
+                        <i class="fa-solid fa-trash"></i> Elimina
+                    </button>
+                </div>
             </div>
-            <div class="d-flex justify-content-end gap-3 mb-4">
-                <a href="{{ route('points-of-interest.edit', $poi->id) }}" class="btn btn-warning"><i
-                        class="fa-regular fa-pen-to-square"></i> Modifica</a>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#modal-{{ $poi->id }}">
-                    <i class="fa-solid fa-trash"></i> Elimina
-                </button>
-            </div>
+
 
             {{-- div con tags --}}
             <div class="d-flex gap-3 align-items-start flex-wrap">

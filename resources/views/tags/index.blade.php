@@ -6,7 +6,7 @@
 
     <div class="container my-5">
         <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <div class="card-header ms-background text-white d-flex justify-content-between align-items-center">
                 <h2 class="mb-0"><i class="fas fa-tag me-2"></i>Elenco tag</h2>
                 <a href="{{ route('tags.create') }}" class="btn btn-light">
                     <i class="fas fa-plus me-2"></i>Nuovo tag

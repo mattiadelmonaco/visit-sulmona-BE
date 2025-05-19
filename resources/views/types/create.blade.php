@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
-@section('title', 'Aggiungi tipologia punto di interesse')
+@section('title', 'Aggiungi tipologia associabile')
 
 @section('page')
     <div class="container my-5">
         <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white">
+            <div class="card-header ms-background text-white">
                 <h2 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Nuova tipologia per attrazioni e attività</h2>
             </div>
             <div class="card-body">
@@ -21,7 +21,7 @@
                         <a href="{{ route('types.index') }}" class="btn btn-secondary mb-2">
                             <i class="fas fa-arrow-left me-2"></i>Indietro
                         </a>
-                        <button type="submit" class="btn btn-primary mb-2">
+                        <button type="submit" class="btn btn-success mb-2">
                             <i class="fas fa-save me-2"></i>Salva
                         </button>
                     </div>
