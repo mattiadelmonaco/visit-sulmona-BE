@@ -27,17 +27,20 @@ footer {
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-    width: 0.5rem;
+    width: 0.875rem;
+    height: 0.6rem;
 }
 
 ::-webkit-scrollbar-track {
-    background: #282828;
+    background: #1e1e1e;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #99031e;
+    background: linear-gradient(180deg, #b10e2f, #80021a);
+    border-radius: 0.625rem;
+    border: 0.1875rem solid #1e1e1e;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #8a031c;
+    background: linear-gradient(180deg, #c31234, #99031e);
 }
