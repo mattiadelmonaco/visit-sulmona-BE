@@ -6,7 +6,7 @@
     <div class="container my-5">
         <div class="card shadow-sm">
             <div class="card-header bg-primary text-white">
-                <h2 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Nuovo punto di interesse</h2>
+                <h2 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Nuova attrazione o attività</h2>
             </div>
             <div class="card-body">
                 <form action="{{ route('points-of-interest.store') }}" method="POST" enctype="multipart/form-data">
@@ -20,8 +20,7 @@
                         <div class="card-body">
                             <div class="row g-3">
                                 <div class="col-12">
-                                    <label for="name" class="form-label">Nome punto di interesse <span
-                                            class="text-danger">*</span></label>
+                                    <label for="name" class="form-label">Nome <span class="text-danger">*</span></label>
                                     <input type="text" name="name" id="name" class="form-control" required>
                                 </div>
 

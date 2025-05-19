@@ -10,8 +10,9 @@
                 Benvenuto nel BackOffice di Visits Sulmona! <i class="bi bi-box"></i>
             </h1>
 
-            <div class="col-md-8 fs-4 text-center mx-auto">
-                <p class="m-0">Gestici i punti di interesse della città direttamente da questo gestionale!</p>
+            <div class="col-md-9 fs-4 text-center mx-auto">
+                <p class="m-0">Gestici tutto ciò che c'è da vedere e da fare in città direttamente da questo gestionale!
+                </p>
                 <p>Quello che inserisci verrà visualizzato nel sito per i visitatori!</p>
             </div>
 

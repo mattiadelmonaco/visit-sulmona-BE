@@ -12,7 +12,8 @@
     <div class="container my-5">
         <div class="card shadow-sm">
             <div class="card-header bg-warning text-white">
-                <h2 class="mb-0 text-dark"><i class="fa-regular fa-pen-to-square"></i> Modifica il punto di interesse
+                <h2 class="mb-0 text-dark"><i class="fa-regular fa-pen-to-square"></i> Modifica l'attrazione o attività
+                    "{{ $poi->name }}"
                 </h2>
             </div>
             <div class="card-body">
@@ -28,8 +29,7 @@
                         <div class="card-body">
                             <div class="row g-3">
                                 <div class="col-12">
-                                    <label for="name" class="form-label">Nome punto di interesse <span
-                                            class="text-danger">*</span></label>
+                                    <label for="name" class="form-label">Nome <span class="text-danger">*</span></label>
                                     <input type="text" name="name" id="name" class="form-control"
                                         value="{{ $poi->name }}" required>
                                 </div>

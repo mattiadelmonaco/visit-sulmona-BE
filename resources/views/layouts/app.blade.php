@@ -56,14 +56,15 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light"
-                                href="{{ route('points-of-interest.index') }}">{{ __('Punti di interesse') }}</a>
+                                href="{{ route('points-of-interest.index') }}">{{ __('Attrazioni e Attività') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light"
-                                href="{{ route('types.index') }}">{{ __('Tipologie punti di interesse') }}</a>
+                                href="{{ route('types.index') }}">{{ __('Tipologie associabili') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="{{ route('tags.index') }}">{{ __('Elenco tag') }}</a>
+                            <a class="nav-link text-light"
+                                href="{{ route('tags.index') }}">{{ __('Tag utilizzabili') }}</a>
                         </li>
                     </ul>
 

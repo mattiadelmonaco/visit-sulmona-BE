@@ -6,7 +6,7 @@
     <div class="container my-5">
         <div class="card shadow-sm">
             <div class="card-header bg-primary text-white">
-                <h2 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Nuova tipologia punto di interesse</h2>
+                <h2 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Nuova tipologia per attrazioni e attività</h2>
             </div>
             <div class="card-body">
                 <form action="{{ route('types.store') }}" method="POST">

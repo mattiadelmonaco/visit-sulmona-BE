@@ -9,7 +9,8 @@
     <div class="container my-5">
         <div class="card shadow-sm">
             <div class="card-header bg-warning text-white">
-                <h2 class="mb-0 text-dark"><i class="fas fa-plus-circle me-2"></i>Modifica tipologia punto di interesse</h2>
+                <h2 class="mb-0 text-dark"><i class="fas fa-plus-circle me-2"></i>Modifica tipologia "{{ $type->name }}"
+                </h2>
             </div>
             <div class="card-body">
                 <form action="{{ route('types.update', $type->id) }}" method="POST">
