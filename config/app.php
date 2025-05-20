@@ -53,7 +53,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
-    'fe-url' => env('FE_URL'),
+    'fe-url' => env('VITE_FE_URL'),
 
     /*
     |--------------------------------------------------------------------------

@@ -22,6 +22,7 @@ class PoiController extends Controller
     public function show(PointOfInterest $poi) {
 
         $poi->load([
+            'firstImage',
         'type',
         'images',
         'tags',
