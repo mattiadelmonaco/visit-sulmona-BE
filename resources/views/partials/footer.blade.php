@@ -6,7 +6,7 @@
                 <img src="{{ asset('storage/visits-sulmona-logo-backoffice.svg') }}" alt="logo" style="width: 120px">
             </div>
         </a>
-        <a href="#"
+        <a href="{{ config('app.fe-url') }}"
             class="text-decoration-none text-danger fw-bold bg-light px-4 py-2 rounded-3 text-center d-block fs-5 hover-scale">Vai
             al
             sito per visitatori</a>
