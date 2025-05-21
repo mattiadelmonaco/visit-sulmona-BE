@@ -61,12 +61,22 @@
         </div>
 
         {{-- immagine di copertina --}}
-        <div class="card w-75 mx-auto shadow-sm mb-4">
-            <div class="ratio ratio-16x9">
-                <img src="{{ asset('storage/' . $poi->first_image) }}" alt="Immagine di copertina di {{ $poi->name }}"
-                    class="card-img object-fit-cover">
+        @if ($poi->first_image)
+            <div class="card w-75 mx-auto shadow-sm mb-4">
+                <div class="ratio ratio-16x9">
+                    <img src="{{ asset('storage/' . $poi->first_image) }}"
+                        alt="Immagine di copertina di {{ $poi->name }}" class="card-img object-fit-cover">
+                </div>
             </div>
-        </div>
+        @else
+            <div class="card w-75 mx-auto shadow-sm mb-4">
+                <div class="ratio ratio-16x9">
+                    <img src="https://img.freepik.com/vettori-premium/vettore-icona-immagine-predefinita-pagina-immagine-mancante-per-la-progettazione-di-siti-web-o-app-per-dispositivi-mobili-nessuna-foto-disponibile_87543-11093.jpg"
+                        alt="Immagine mancante" class="card-img object-fit-cover">
+                </div>
+            </div>
+        @endif
+
 
         {{-- giorni e orari --}}
         @if ($poi->daysOfWeek && $poi->daysOfWeek->count() && $hasOpeningHours)

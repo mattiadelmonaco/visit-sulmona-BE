@@ -153,11 +153,13 @@ class PointOfInterestsController extends Controller
         $points_of_interest->end_date = $data["end_date"];
         $points_of_interest->description = $data["description"];
 
-        if(array_key_exists("first_image", $data)) {
+        if (array_key_exists("first_image", $data)) {
+            if (!empty($points_of_interest->first_image)) {
             Storage::delete($points_of_interest->first_image);
-            $img_url = Storage::putFile("uploads", $data["first_image"]);
-            $points_of_interest->first_image = $img_url;
         }
+        $img_url = Storage::putFile("uploads", $data["first_image"]);
+        $points_of_interest->first_image = $img_url;
+}
 
         if($request->has("tags")) {
             $points_of_interest->tags()->sync($data["tags"]);
