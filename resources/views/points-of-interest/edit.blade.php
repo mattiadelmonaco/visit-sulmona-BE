@@ -211,8 +211,29 @@
                                 <textarea name="description" id="description" class="form-control" rows="5" required>{{ $poi->description ? $poi->description : '' }}</textarea>
                             </div>
 
+                            <div class="mb-5">
+                                <label class="form-label">Cambia immagine di copertina</label>
+
+                                <input type="file" class="form-control mb-3" name="first_image" accept="image/*">
+                                @if ($poi->first_image)
+                                    <div>
+                                        <h3>Immagine di copertina attuale</h3>
+                                        <img src="{{ asset('storage/' . $poi->first_image) }}"
+                                            class="card-img-top object-fit-cover" style="height: 200px"
+                                            alt="Immagine di {{ $poi->name }}">
+                                    </div>
+                                @else
+                                    <div class="alert alert-danger mb-0">
+                                        <i class="fas fa-info-circle me-2"></i><small>Nessuna immagine presente</small>
+                                    </div>
+                                @endif
+
+
+
+                            </div>
+
                             <div>
-                                <label class="form-label">Aggiungi immagini</label>
+                                <label class="form-label">Aggiungi immagini varie</label>
                                 <input type="file" class="form-control" name="images[]" multiple accept="image/*">
                                 <div class="form-text">
                                     Per selezionare più immagini, tieni premuto CTRL mentre selezioni i file
@@ -224,8 +245,10 @@
                         {{-- immagini già caricate --}}
                         <div class="card mt-4">
                             <div class="card-header bg-light mt-4">
-                                <h5 class="mb-0"><i class="fas fa-images me-2"></i>Immagini presenti</h5>
+                                <h5 class="mb-0"><i class="fas fa-images me-2"></i>Immagini varie presenti</h5>
                             </div>
+
+
                             <div class="card-body">
                                 @if ($poi->images->isNotEmpty())
                                     <div class="row g-4" id="images">

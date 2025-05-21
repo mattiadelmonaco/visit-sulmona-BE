@@ -26,10 +26,10 @@
                                     <div class="card h-100 shadow">
 
                                         {{-- immagine principale con link alla show --}}
-                                        @if ($poi->firstImage)
+                                        @if ($poi->first_image)
                                             <a href="{{ route('points-of-interest.show', $poi->id) }}" class="card px-0"
                                                 style="width: 18rem;">
-                                                <img src="{{ asset('storage/' . $poi->firstImage->path) }}"
+                                                <img src="{{ asset('storage/' . $poi->first_image) }}"
                                                     alt="Immagine di {{ $poi->name }}" class="card-img"
                                                     style="height: 200px; object-fit: cover;">
                                             </a>

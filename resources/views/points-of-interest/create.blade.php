@@ -183,8 +183,16 @@
                                 <textarea name="description" id="description" class="form-control" rows="5" required></textarea>
                             </div>
 
+                            <div class="mb-5">
+                                <label class="form-label">Immagine di copertina</label>
+                                <input type="file" class="form-control" name="first_image" accept="image/*">
+                                <div class="form-text">
+                                    Seleziona l'immagine di copertina
+                                </div>
+                            </div>
+
                             <div>
-                                <label class="form-label">Immagini</label>
+                                <label class="form-label">Immagini varie</label>
                                 <input type="file" class="form-control" name="images[]" multiple accept="image/*">
                                 <div class="form-text">
                                     Per selezionare più immagini, tieni premuto CTRL mentre selezioni i file

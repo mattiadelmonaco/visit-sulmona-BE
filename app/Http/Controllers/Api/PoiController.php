@@ -11,7 +11,7 @@ class PoiController extends Controller
 {
     public function index() {
 
-        $poi = PointOfInterest::with('firstImage', 'type')->get();
+        $poi = PointOfInterest::with('type')->get();
 
         return response()->json([
             "success" => true,
@@ -22,7 +22,6 @@ class PoiController extends Controller
     public function show(PointOfInterest $poi) {
 
         $poi->load([
-            'firstImage',
         'type',
         'images',
         'tags',
@@ -39,7 +38,7 @@ class PoiController extends Controller
 
     public function indexByType($typeId) {
 
-    $poi = PointOfInterest::with('firstImage', 'type')
+    $poi = PointOfInterest::with('type')
             ->where('type_id', $typeId)
             ->get();
 

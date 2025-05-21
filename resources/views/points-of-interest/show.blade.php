@@ -39,13 +39,8 @@
                 </div>
             </div>
 
-
             {{-- div con tags --}}
             <div class="d-flex gap-3 align-items-start flex-wrap">
-
-
-
-
                 @if ($poi->tags->isNotEmpty())
                     <div class="d-inline-flex gap-2 flex-wrap align-items-center">
                         @foreach ($poi->tags as $tag)
@@ -62,6 +57,14 @@
                         <span class="fs-6">Nessun tag</span>
                     </span>
                 @endif
+            </div>
+        </div>
+
+        {{-- immagine di copertina --}}
+        <div class="card w-75 mx-auto shadow-sm mb-4">
+            <div class="ratio ratio-16x9">
+                <img src="{{ asset('storage/' . $poi->first_image) }}" alt="Immagine di copertina di {{ $poi->name }}"
+                    class="card-img object-fit-cover">
             </div>
         </div>
 

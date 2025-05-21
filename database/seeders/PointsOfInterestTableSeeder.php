@@ -30,6 +30,7 @@ class PointsOfInterestTableSeeder extends Seeder
             $newPOI->external_link = $faker->url();
             $newPOI->phone_number = $faker->phoneNumber();
             $newPOI->email = $faker->email();
+            $newPOI->first_image = "https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg";
 
             $newPOI->save();
         }

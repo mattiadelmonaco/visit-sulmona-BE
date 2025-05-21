@@ -19,7 +19,7 @@ class PointOfInterestsController extends Controller
      */
     public function index()
     {
-        $pointsOfInterest = PointOfInterest::with('firstImage')->where('user_id', Auth::id())->get();
+        $pointsOfInterest = PointOfInterest::all();
         
         return view("points-of-interest.index", compact("pointsOfInterest"));
     }
@@ -60,6 +60,12 @@ class PointOfInterestsController extends Controller
         $newPoint->start_date = $data["start_date"];
         $newPoint->end_date = $data["end_date"];
         $newPoint->description = $data["description"];
+        
+        if(array_key_exists("first_image", $data)) {
+            $img_url = Storage::putFile('uploads', $data["first_image"]);
+
+            $newPoint->first_image = $img_url;
+        }
 
         $newPoint->save();
 
@@ -147,6 +153,12 @@ class PointOfInterestsController extends Controller
         $points_of_interest->end_date = $data["end_date"];
         $points_of_interest->description = $data["description"];
 
+        if(array_key_exists("first_image", $data)) {
+            Storage::delete($points_of_interest->first_image);
+            $img_url = Storage::putFile("uploads", $data["first_image"]);
+            $points_of_interest->first_image = $img_url;
+        }
+
         if($request->has("tags")) {
             $points_of_interest->tags()->sync($data["tags"]);
         } else {
@@ -192,6 +204,10 @@ class PointOfInterestsController extends Controller
      */
     public function destroy(PointOfInterest $points_of_interest)
     {
+        if(Storage::disk('public')->exists($points_of_interest->first_image)) {
+            Storage::disk('public')->delete($points_of_interest->first_image);
+        }
+
         foreach ($points_of_interest->images as $image) {
         if (Storage::disk('public')->exists($image->path)) {
             Storage::disk('public')->delete($image->path);
