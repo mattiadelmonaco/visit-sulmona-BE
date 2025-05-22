@@ -40,6 +40,7 @@ class PoiController extends Controller
 
     $poi = PointOfInterest::with('type')
             ->where('type_id', $typeId)
+            ->orderBy('id', 'desc')
             ->get();
 
         return response()->json([
