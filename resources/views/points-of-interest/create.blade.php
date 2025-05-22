@@ -25,7 +25,8 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="types" class="form-label">Tipologia</label>
+                                    <label for="types" class="form-label">Tipologia <span
+                                            class="text-danger">*</span></label>
                                     <select name="type_id" id="types" class="form-select" required>
                                         <option value="">Seleziona una tipologia</option>
                                         @foreach ($types as $type)
