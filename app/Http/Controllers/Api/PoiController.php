@@ -35,13 +35,24 @@ class PoiController extends Controller
     ];
 
 
-    public function index() {
+    public function index(Request $request) {
 
-        $poi = PointOfInterest::with('type')->orderBy('id', 'desc')->get();
+        $limit = $request->query('limit');
+
+        $query = PointOfInterest::with('type')->orderBy('id', 'desc');
+
+        if ($limit) {
+        $poi = $query->limit($limit)->get();
+        } else {
+        $poi = $query->get();
+        }
+
+        $totalPoi = PointOfInterest::count();
 
         return response()->json([
             "success" => true,
-            "data" => $poi
+            "data" => $poi,
+            "totalPoi" => $totalPoi
         ]);
     }
 
