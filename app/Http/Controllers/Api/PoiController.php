@@ -14,7 +14,7 @@ class PoiController extends Controller
         'cultura' => [
             'Evento', 'Monumento', 'Museo', 'Chiesa', 'Teatro', 'Cinema', "Galleria d'arte", 'Biblioteca'
         ],
-        'tempo-libero' => [
+        'tempolibero' => [
             'Evento', 'Parco', 'Stadio', 'Spiaggia', 'Mercato', 'Teatro', 'Cinema'
         ],
         'cibo' => [
