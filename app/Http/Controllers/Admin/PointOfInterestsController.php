@@ -19,7 +19,7 @@ class PointOfInterestsController extends Controller
      */
     public function index()
     {
-        $pointsOfInterest = PointOfInterest::all();
+        $pointsOfInterest = PointOfInterest::orderBy('id', 'desc')->get();
         
         return view("points-of-interest.index", compact("pointsOfInterest"));
     }

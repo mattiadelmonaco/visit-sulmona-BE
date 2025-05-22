@@ -11,7 +11,7 @@ class PoiController extends Controller
 {
     public function index() {
 
-        $poi = PointOfInterest::with('type')->get();
+        $poi = PointOfInterest::with('type')->orderBy('id', 'desc')->get();
 
         return response()->json([
             "success" => true,
