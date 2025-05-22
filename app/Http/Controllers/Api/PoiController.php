@@ -9,6 +9,32 @@ use Illuminate\Http\Request;
 
 class PoiController extends Controller
 {
+
+    protected $macroCategories = [
+        'cultura' => [
+            'Evento', 'Monumento', 'Museo', 'Chiesa', 'Teatro', 'Cinema', "Galleria d'arte", 'Biblioteca'
+        ],
+        'tempo-libero' => [
+            'Evento', 'Parco', 'Stadio', 'Spiaggia', 'Mercato', 'Teatro', 'Cinema'
+        ],
+        'cibo' => [
+            'Ristorante', 'Bar', 'Enoteca', 'Agriturismo'
+        ],
+        'ospitalità' => [
+            'Hotel', 'BnB', 'Agriturismo'
+        ],
+        'commercio' => [
+            'Negozio', 'Centro commerciale', 'Mercato'
+        ],
+        'comunità' => [
+            'Associazione', 'Chiesa', 'Biblioteca'
+        ],
+        'natura' => [
+            'Parco', 'Spiaggia', 'Agriturismo', 'Stadio'
+        ],
+    ];
+
+
     public function index() {
 
         $poi = PointOfInterest::with('type')->orderBy('id', 'desc')->get();
@@ -56,6 +82,31 @@ class PoiController extends Controller
         return response()->json([
             "success" => true,
             "data" => $types
+        ]);
+    }
+
+    public function indexByMacroCategory($macroCategory)
+    {
+        if (!isset($this->macroCategories[$macroCategory])) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Categoria non trovata'
+            ], 404);
+        }
+
+        $typeNames = $this->macroCategories[$macroCategory];
+
+        $poi = PointOfInterest::with('type')
+            ->whereHas('type', function ($query) use ($typeNames) {
+                $query->whereIn('name', $typeNames);
+            })
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return response()->json([
+            'success' => true,
+            'macro_category' => $macroCategory,
+            'data' => $poi
         ]);
     }
 }

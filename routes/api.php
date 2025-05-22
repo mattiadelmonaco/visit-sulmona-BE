@@ -16,3 +16,4 @@ Route::get("/poi/type/{typeId}", [PoiController::class, "indexByType"]);
 
 Route::get("/types", [PoiController::class, "indexTypes"]);
 
+Route::get('/poi/macro-category/{macroCategory}', [PoiController::class, 'indexByMacroCategory']);
