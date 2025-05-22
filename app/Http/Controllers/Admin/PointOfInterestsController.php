@@ -206,9 +206,9 @@ class PointOfInterestsController extends Controller
      */
     public function destroy(PointOfInterest $points_of_interest)
     {
-        if(Storage::disk('public')->exists($points_of_interest->first_image)) {
+        if (!empty($points_of_interest->first_image) && Storage::disk('public')->exists($points_of_interest->first_image)) {
             Storage::disk('public')->delete($points_of_interest->first_image);
-        }
+    }
 
         foreach ($points_of_interest->images as $image) {
         if (Storage::disk('public')->exists($image->path)) {
