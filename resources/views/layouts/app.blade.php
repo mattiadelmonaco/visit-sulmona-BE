@@ -28,8 +28,6 @@
 
 <body>
     <div id="app">
-
-
         <nav class="navbar navbar-expand-md navbar-dark ms-header shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
@@ -108,6 +106,17 @@
                 </div>
             </div>
         </nav>
+
+        <div class="bg-light py-2 shadow-sm">
+            <div class="container">
+                <form class="d-flex justify-content-center" action="{{ route('points-of-interest.search') }}"
+                    method="GET">
+                    <input class="form-control me-2" style="max-width: 300px;" type="search" name="query"
+                        placeholder="Cerca per nome" aria-label="Search">
+                    <button class="btn btn-outline-danger" type="submit">Cerca</button>
+                </form>
+            </div>
+        </div>
 
         <main class="">
             @yield('content')
