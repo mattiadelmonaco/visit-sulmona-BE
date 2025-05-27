@@ -43,4 +43,8 @@ Route::resource("tags", TagsController::class)
 Route::resource("points-of-interest", PointOfInterestsController::class)
     ->middleware(["auth", "verified"]);
 
+Route::get('/search', [PointOfInterestsController::class, 'search'])
+    ->middleware(["auth", "verified"])
+    ->name('points-of-interest.search');
+
 require __DIR__.'/auth.php';
