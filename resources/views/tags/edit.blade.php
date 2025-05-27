@@ -10,6 +10,7 @@
                 <h2 class="mb-0 text-dark"><i class="fas fa-plus-circle me-2"></i>Modifica tag</h2>
             </div>
             <div class="card-body">
+                <p class="text-danger fw-bold">* campo obbligatorio</p>
                 <form action="{{ route('tags.update', $tag->id) }}" method="POST">
                     @csrf
                     @method('PUT')

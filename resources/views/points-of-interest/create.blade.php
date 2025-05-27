@@ -9,6 +9,7 @@
                 <h2 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Nuova attrazione o attività</h2>
             </div>
             <div class="card-body">
+                <p class="text-danger fw-bold">* campo obbligatorio</p>
                 <form action="{{ route('points-of-interest.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 

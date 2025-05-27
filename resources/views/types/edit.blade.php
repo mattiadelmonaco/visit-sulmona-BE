@@ -13,6 +13,7 @@
                 </h2>
             </div>
             <div class="card-body">
+                <p class="text-danger fw-bold">* campo obbligatorio</p>
                 <form action="{{ route('types.update', $type->id) }}" method="POST">
                     @csrf
                     @method('PUT')

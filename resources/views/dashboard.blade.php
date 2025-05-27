@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="height: 100vh;">
         <h2 class="fs-4 text-secondary my-4">
             {{ __('Dashboard') }}
         </h2>
@@ -32,4 +32,6 @@
             </div>
         </div>
     </div>
+
+    @include('partials.footer')
 @endsection

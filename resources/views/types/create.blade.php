@@ -9,6 +9,7 @@
                 <h2 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Nuova tipologia per attrazioni e attività</h2>
             </div>
             <div class="card-body">
+                <p class="text-danger fw-bold">* campo obbligatorio</p>
                 <form action="{{ route('types.store') }}" method="POST">
                     @csrf
 

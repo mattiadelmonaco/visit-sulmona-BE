@@ -17,6 +17,7 @@
                 </h2>
             </div>
             <div class="card-body">
+                <p class="text-danger fw-bold">* campo obbligatorio</p>
                 <form action="{{ route('points-of-interest.update', $poi->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
