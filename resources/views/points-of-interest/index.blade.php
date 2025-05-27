@@ -5,7 +5,8 @@
 @section('page')
     <div class="container my-5">
         <div class="card shadow-sm">
-            <div class="card-header ms-background text-white d-flex justify-content-between align-items-center">
+            <div
+                class="card-header ms-background text-white d-flex justify-content-between align-items-center flex-wrap gap-3">
                 <h2 class="mb-0"><i class="fas fa-map-marker-alt me-2"></i> Tutte le attrazioni e attività</h2>
                 <a href="{{ route('points-of-interest.create') }}" class="btn btn-light">
                     <i class="fas fa-plus me-2"></i>Nuova attrazione o attività
@@ -27,18 +28,17 @@
 
                                         {{-- immagine principale con link alla show --}}
                                         @if ($poi->first_image)
-                                            <a href="{{ route('points-of-interest.show', $poi->id) }}" class="card px-0"
-                                                style="width: 18rem;">
+                                            <a href="{{ route('points-of-interest.show', $poi->id) }}" class="card-img-top">
                                                 <img src="{{ asset('storage/' . $poi->first_image) }}"
-                                                    alt="Immagine di {{ $poi->name }}" class="card-img"
+                                                    alt="Immagine di {{ $poi->name }}" class="w-100"
                                                     style="height: 200px; object-fit: cover;">
                                             </a>
-                                            {{-- se non c'è l'immagine ne passo una di default --}}
                                         @else
-                                            <a href="{{ route('points-of-interest.show', $poi->id) }}" class="card px-0"
-                                                style="width: 18rem;"><img
-                                                    src="https://img.freepik.com/vettori-premium/vettore-icona-immagine-predefinita-pagina-immagine-mancante-per-la-progettazione-di-siti-web-o-app-per-dispositivi-mobili-nessuna-foto-disponibile_87543-11093.jpg"
-                                                    alt="Immagine mancante" style="height: 200px; object-fit: cover;"></a>
+                                            <a href="{{ route('points-of-interest.show', $poi->id) }}" class="card-img-top">
+                                                <img src="https://img.freepik.com/vettori-premium/vettore-icona-immagine-predefinita-pagina-immagine-mancante-per-la-progettazione-di-siti-web-o-app-per-dispositivi-mobili-nessuna-foto-disponibile_87543-11093.jpg"
+                                                    alt="Immagine mancante" class="w-100"
+                                                    style="height: 200px; object-fit: cover;">
+                                            </a>
                                         @endif
 
                                         {{-- nome e descrizione --}}

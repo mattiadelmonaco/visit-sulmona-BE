@@ -5,7 +5,8 @@
 @section('page')
     <div class="container my-5">
         <div class="card shadow-sm">
-            <div class="card-header ms-background text-white d-flex justify-content-between align-items-center">
+            <div
+                class="card-header ms-background text-white d-flex justify-content-between align-items-center flex-wrap gap-3">
                 <h2 class="mb-0"><i class="fas fa-tags me-2"></i>Tipologie attrazioni e attività</h2>
                 <a href="{{ route('types.create') }}" class="btn btn-light">
                     <i class="fas fa-plus me-2"></i>Nuova tipologia
