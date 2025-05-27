@@ -221,4 +221,15 @@ class PointOfInterestsController extends Controller
 
         return redirect()->route("points-of-interest.index");
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $pointsOfInterest = PointOfInterest::where('user_id', Auth::id())
+            ->where('name', 'LIKE', "%{$query}%")
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return view('points-of-interest.search', compact('pointsOfInterest', 'query'));
+    }
 }
