@@ -107,6 +107,7 @@
             </div>
         </nav>
 
+        {{-- barra di ricerca --}}
         <div class="bg-light py-2 shadow-sm">
             <div class="container">
                 <form class="d-flex justify-content-center" action="{{ route('points-of-interest.search') }}"

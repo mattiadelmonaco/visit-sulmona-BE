@@ -51,7 +51,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function sendEmailVerificationNotification()
     {
-        $this->notify(new CustomVerifyEmail());
+        $this->notify(new CustomVerifyEmail()); // per inviare email custom
     }
 
     public function pointOfInterests()

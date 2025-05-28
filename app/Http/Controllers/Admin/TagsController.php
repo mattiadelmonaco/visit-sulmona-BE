@@ -33,7 +33,7 @@ class TagsController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['name'] = ucfirst(strtolower($data['name']));
+        $data['name'] = ucfirst(strtolower($data['name'])); // ucfirst mette la prima lettera maiuscola, strtolower rende tutto minuscolo
 
         $newTag = new Tag();
 

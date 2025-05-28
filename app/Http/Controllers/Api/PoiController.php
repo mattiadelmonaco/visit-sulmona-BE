@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class PoiController extends Controller
 {
 
-    protected $macroCategories = [
+    protected $macroCategories = [ // protected cosi può essere gestita solo dentro la classe o sottoclassi
         'cultura' => [
             'Evento', 'Monumento', 'Museo', 'Chiesa', 'Teatro', 'Cinema', "Galleria d'arte", 'Biblioteca'
         ],
@@ -42,12 +42,12 @@ class PoiController extends Controller
         $query = PointOfInterest::with('type')->orderBy('id', 'desc');
 
         if ($limit) {
-        $poi = $query->limit($limit)->get();
+        $poi = $query->limit($limit)->get(); // se c'è un limite restituisce il numero di poi in base al limite
         } else {
-        $poi = $query->get();
+        $poi = $query->get(); // altrimenti li restituisce tutti
         }
 
-        $totalPoi = PointOfInterest::count();
+        $totalPoi = PointOfInterest::count(); // serve per contare tutti i poi (per tasto mostra tutti in FE)
 
         return response()->json([
             "success" => true,
@@ -75,7 +75,7 @@ class PoiController extends Controller
 
     public function indexByType($typeId) {
 
-    $poi = PointOfInterest::with('type')
+    $poi = PointOfInterest::with('type') // restituisce i poi con quel type id
             ->where('type_id', $typeId)
             ->orderBy('id', 'desc')
             ->get();
@@ -88,7 +88,7 @@ class PoiController extends Controller
 
     public function indexTypes() {
 
-        $types = Type::all();
+        $types = Type::all(); // prende tutti i type (per select in FE)
 
         return response()->json([
             "success" => true,
@@ -98,17 +98,17 @@ class PoiController extends Controller
 
     public function indexByMacroCategory($macroCategory)
     {
-        if (!isset($this->macroCategories[$macroCategory])) {
+        if (!isset($this->macroCategories[$macroCategory])) { // controlla se la categoria (type) esiste nella macrocategoria
             return response()->json([
                 'success' => false,
                 'message' => 'Categoria non trovata'
             ], 404);
         }
 
-        $typeNames = $this->macroCategories[$macroCategory];
+        $typeNames = $this->macroCategories[$macroCategory]; // estrae l'elenco dei type associati
 
         $poi = PointOfInterest::with('type')
-            ->whereHas('type', function ($query) use ($typeNames) {
+            ->whereHas('type', function ($query) use ($typeNames) { // filtra i poi in base ai types presenti in typeNames
                 $query->whereIn('name', $typeNames);
             })
             ->orderBy('id', 'desc')

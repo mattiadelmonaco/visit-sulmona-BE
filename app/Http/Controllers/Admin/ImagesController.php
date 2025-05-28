@@ -59,14 +59,15 @@ class ImagesController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * Per cancellare immagine singola dalla edit
      */
     public function destroy(Image $image)
     {
-        if ($image->path && Storage::disk('public')->exists($image->path)) {
-        Storage::disk('public')->delete($image->path);
+        if ($image->path && Storage::disk('public')->exists($image->path)) { // controlla se il file è presente nel database e nella cartella public
+        Storage::disk('public')->delete($image->path); // cancella file da public
     }
-        $image->delete();
+        $image->delete(); // cancella dal database
 
-        return redirect()->back()->withFragment('images');
+        return redirect()->back()->withFragment('images'); // per tornare in quella parte della pagina
     }
 }

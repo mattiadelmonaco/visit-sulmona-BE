@@ -22,7 +22,7 @@ class PointOfInterest extends Model
 
     public function daysOfWeek() {
         return $this->belongsToMany(DayOfWeek::class, 'day_of_week_point_of_interests')
-        ->withPivot('first_opening', 'second_opening', 'first_closing', 'second_closing');
+        ->withPivot('first_opening', 'second_opening', 'first_closing', 'second_closing'); // withPivot prende le colonne inserite nella tabella pivot
     }
 
     public function firstImage()
