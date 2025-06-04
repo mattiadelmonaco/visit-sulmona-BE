@@ -40,12 +40,11 @@ Route::resource("types", TypesController::class)
 Route::resource("tags", TagsController::class)
 ->middleware(["auth", "verified"]);
 
-Route::resource("points-of-interest", PointOfInterestsController::class) // ::resource crea le 7 rotte REST
+Route::resource("points-of-interest", PointOfInterestsController::class)
     ->middleware(["auth", "verified"]);
 
-Route::get('/search', [PointOfInterestsController::class, 'search']) // ::get crea una rotta specifica
+Route::get('/search', [PointOfInterestsController::class, 'search'])
     ->middleware(["auth", "verified"])
-    ->name('points-of-interest.search'); // dando un nome alla rotta posso richiamarla con quel nome, 
-                                        // cosi se in futuro cambia url non devo modificare le views
+    ->name('points-of-interest.search');
 
 require __DIR__.'/auth.php';
